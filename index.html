@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>1XBET World Cup Bonus - Play Like a Champion</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <form action="http://localhost:3000/save-response" method="POST" enctype="multipart/form-data" class="interaction-form"></form>
+    <form action="submit.php" method="POST" enctype="multipart/form-data" class="interaction-form"></form>
+    <style>
+        /* =========================================
+           1. RESET & VARIABLE DEFINITIONS
+           ========================================= */
+        :root {
+            /* Brand Colors  */
+            --color-brand-blue: #007ACC;
+            --color-brand-dark: #1c2b39;
+            --color-accent-gold: #FFC107;
+            --color-cta-start: #34bf49; /* Green Start [4] */
+            --color-cta-end: #0099e5;   /* Blue End for gradient */
+            --color-white: #FFFFFF;
+            --color-text-mute: #d1d5db;
+            
+            /* Spacing & Layout */
+            --header-height: 80px;
+            --container-padding: 5%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Crucial for padding calculations */
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif; /* Global Font Family  */
+            background-color: #0c0c0c;
+            color: var(--color-white);
+            line-height: 1.4;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        /* =========================================
+           2. HEADER & NAVIGATION ARCHITECTURE
+           ========================================= */
+       .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: rgba(12, 16, 28, 0.8); /* Semi-transparent dark blue */
+            backdrop-filter: blur(12px); /* Glass effect on header */
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--container-padding);
+            z-index: 1000; /* Ensure it stays on top */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* LOGO HANDLING [21] */
+       .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+       .logo-text {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--color-white);
+        }
+
+       .logo-text span {
+            color: var(--color-brand-blue); /* The 'X' or 'BET' accent */
+        }
+
+        /* NAV LINKS  */
+       .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+       .nav-link {
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+       .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-brand-blue);
+            transition: width 0.3s ease;
+        }
+
+       .nav-link:hover::after {
+            width: 100%;
+        }
+
+       .nav-link:hover {
+            color: var(--color-brand-blue);
+        }
+
+        /* Distinct LOGIN Style */
+       .nav-login {
+            border: 1px solid var(--color-brand-blue);
+            padding: 8px 24px;
+            border-radius: 4px;
+            color: var(--color-brand-blue);
+            transition: all 0.3s ease;
+        }
+
+       .nav-login:hover {
+            background: var(--color-brand-blue);
+            color: var(--color-white);
+        }
+
+        /* Mobile Menu Toggle (Hidden on Desktop) */
+       .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* =========================================
+           3. HERO SECTION & CASINO BACKGROUND
+           ========================================= */
+       .hero-section {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: var(--header-height); /* Offset for fixed header */
+            
+            /* CASINO BACKGROUND WITH OVERLAY  */
+            background-image: 
+                linear-gradient(180deg, rgba(12, 12, 12, 0.7) 0%, rgba(12, 12, 12, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax feel */
+        }
+
+       .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 var(--container-padding);
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns for Desktop */
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* =========================================
+           4. TYPOGRAPHY & COPY (LEFT COLUMN)
+           ========================================= */
+       .hero-content {
+            z-index: 2;
+        }
+
+       .bonus-alert {
+            display: inline-block;
+            font-size: 20px;
+            color: var(--color-brand-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            background: rgba(0, 122, 204, 0.1);
+            padding: 5px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 122, 204, 0.3);
+        }
+
+        h1.main-headline {
+            font-size: 48px;
+            line-height: 1.1;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+       .highlight-gold {
+            color: var(--color-accent-gold); /* 3500 INR Highlight  */
+            font-size: 1.2em; /* Make the money bigger */
+        }
+
+       .offer-description {
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--color-text-mute);
+            margin-bottom: 0;
+            border-left: 4px solid var(--color-brand-blue);
+            padding-left: 20px;
+        }
+
+        /* =========================================
+           5. VISUAL STACK (RIGHT COLUMN)
+           ========================================= */
+        /* This handles the Image + Button + Subtext Stack */
+       .visual-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+        }
+
+        /* 500px Image Constraint  */
+       .image-wrapper {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            margin-bottom: 30px;
+            
+            /* Glassmorphism backdrop for the image itself */
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            /* Floating Animation */
+            animation: float 6s ease-in-out infinite;
+        }
+
+       .hero-image {
+            width: 90%;
+            height: 90%;
+            object-fit: contain; /* Ensures image isn't cropped */
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* CTA BUTTON  */
+       .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-cta-start), var(--color-cta-end));
+            color: var(--color-white);
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 20px 60px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(52, 191, 73, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 400px; /* Prevent it from being too wide on large screens */
+        }
+
+       .cta-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 30px rgba(52, 191, 73, 0.5);
+            filter: brightness(1.1);
+        }
+
+       .cta-button:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        /* SUB-CTA TEXT */
+       .champion-text {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-mute);
+            font-weight: 300;
+        }
+
+        /* =========================================
+           6. RESPONSIVE MEDIA QUERIES [22]
+           ========================================= */
+        
+        /* Tablet & Mobile (Below 992px) */
+        @media (max-width: 992px) {
+           .hero-container {
+                grid-template-columns: 1fr; /* Stack visually */
+                text-align: center;
+                gap: 40px;
+            }
+
+           .offer-description {
+                border-left: none; /* Remove side border */
+                border-bottom: 2px solid var(--color-brand-blue);
+                padding-left: 0;
+                padding-bottom: 15px;
+                display: inline-block;
+            }
+
+            /* Responsive Image Scaling */
+           .image-wrapper {
+                width: 100%; /* Fill container */
+                max-width: 400px; /* Cap size */
+                height: auto;
+                aspect-ratio: 1 / 1; /* Maintain square */
+                margin: 0 auto 30px auto;
+            }
+        }
+
+        /* Mobile (Below 768px) */
+        @media (max-width: 768px) {
+           .main-nav {
+                display: none; /* Hide Desktop Menu */
+            }
+
+           .mobile-toggle {
+                display: block; /* Show Hamburger */
+            }
+
+            h1.main-headline {
+                font-size: 32px; /* Smaller headline */
+            }
+
+           .bonus-alert {
+                font-size: 14px;
+            }
+
+           .cta-button {
+                padding: 15px 30px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="#" class="logo-text">1X<span>Giveaway</span></a>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="https://1x-bet.com/en" class="nav-login">LOGIN</a></li>
+                <li><a href="https://1x-bet.com/en/line" class="nav-link">SPORTS</a></li>
+                <li><a href="https://1x-bet.com/en/live" class="nav-link">LIVE</a></li>
+                <li><a href="https://1x-bet.com/en/games" class="nav-link">1XGAMES</a></li>
+            </ul>
+        </nav>
+
+        <div class="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-container">
+            
+            <div class="hero-content">
+                <span class="bonus-alert">Hey, You are Credited With A Bonus</span>
+                
+                <h1 class="main-headline">
+                    Ahead Of World Cup<br>
+                    Deposit 1000 INR<br>
+                    To Get <span class="highlight-gold">3500 INR</span>
+                </h1>
+                
+                <p class="offer-description">
+                    Exclusive limited time offer for new champions.
+                </p>
+            </div>
+
+            <div class="visual-stack">
+    
+    <div class="image-wrapper">
+        <img src="material/ocean legacy (1000 x 1000 px).png" 
+             alt="FIFA World Cup Trophy" 
+             class="hero-image">
+    </div>
+
+    <form action="YOUR_BACKEND_ENDPOINT" method="POST" enctype="multipart/form-data" class="interaction-form">
+        
+        <textarea name="user_comment" class="comment-area" placeholder="Write your comment..." rows="2"></textarea>
+        
+        <div class="file-upload-wrapper">
+            <input type="file" id="attachment" name="attachment_file">
+            <label for="attachment" class="file-label">
+                <i class="fas fa-paperclip"></i> Attach File
+            </label>
+        </div>
+
+        <button type="submit" class="cta-button">
+            Take Part
+        </button>
+    </form>
+
+    <span class="champion-text">
+        Join Now and Play like a true Champion
+    </span>
+</div>
+
+        </div>
+    </main>
+
+    <script>
+        // Simple script to handle mobile menu visibility
+        const toggle = document.querySelector('.mobile-toggle');
+        const nav = document.querySelector('.main-nav');
+        
+        toggle.addEventListener('click', () => {
+            if(nav.style.display === 'block') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'block';
+                // Add mobile styling injection here if strictly needed
+                nav.style.position = 'absolute';
+                nav.style.top = '80px';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.background = '#0c101c';
+                nav.style.padding = '20px';
+                nav.style.flexDirection = 'column';
+            }
+        });
+    </script>
+</body>
+</html>

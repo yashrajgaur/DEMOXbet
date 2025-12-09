@@ -1,0 +1,77 @@
+background: 
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), /* The Darkening Layer */
+    url('path-to-casino-image.jpg'); /* The Visual Layer */
+
+    .glass-container {
+    background: rgba(255, 255, 255, 0.05); /* Extremely subtle white tint */
+    backdrop-filter: blur(10px); /* The frosted effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* The glass edge */
+}
+
+.image-container {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1; /* Forces a square */
+}
+
+/* =========================================
+   7. COMMENT & FORM STYLES (NEW)
+   ========================================= */
+.interaction-form {
+    width: 100%;
+    max-width: 400px; /* Match button width */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text/inputs to the left or center */
+    margin-bottom: 10px;
+    z-index: 5;
+}
+
+.comment-area {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05); /* Subtle glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    color: var(--color-white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+    resize: none; /* Prevent resizing breaking layout */
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.comment-area:focus {
+    border-color: var(--color-brand-blue);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.file-upload-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.file-label {
+    cursor: pointer;
+    color: var(--color-text-mute);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.file-label:hover {
+    color: var(--color-brand-blue);
+}
+
+/* Hide the default file input but keep it functional */
+#attachment {
+    display: none;
+}
