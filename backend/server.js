@@ -42,9 +42,10 @@ app.post('/save-response', upload.single('attachment_file'), (req, res) => {
     fs.appendFileSync('responses.txt', logEntry);
 
     // Redirect user to the original destination after saving
-    res.redirect('https://cutt.ly/CtiVUXpC');
+    res.redirect('https://t.me/onexgiveaway');
 });
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
+
 });
